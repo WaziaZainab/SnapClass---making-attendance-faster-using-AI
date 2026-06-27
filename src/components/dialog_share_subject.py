@@ -6,11 +6,7 @@ import io
 
 @st.dialog("Share Class Link")
 def share_subject_dialog(subject_name, subject_code):
-<<<<<<< HEAD
     app_domain = "snapclass-attendance-waziazainab.streamlit.app"
-=======
-    app_domain = "snapclass-attendance-wz.streamlit.app"
->>>>>>> bb3efa2 (Fixed enrollment and duplicate button issues)
     join_url = f"{app_domain}/?join-code={subject_code}"
 
     st.header("Scan to Join")

@@ -11,12 +11,18 @@ from src.pipelines.voice_pipeline import get_voice_embedding
 from src.database.db import get_all_students, create_student, get_student_subjects, get_student_attendance, unenroll_student_to_subject
 import time
 
-from src.components.dialog_enroll import enroll_dialog
+
 from src.components.subject_card import subject_card
+from src.components.dialog_enroll import enroll_dialog
+from src.components.dialog_auto_enroll import auto_enroll_dialog
 
 def student_dashboard():
     student_data = st.session_state.student_data
     student_id = student_data['student_id']
+    params = st.query_params
+    if "join-code" in params:
+        auto_enroll_dialog(params["join-code"])
+        
     c1, c2 = st.columns(2, vertical_alignment='center', gap='xxlarge')
     with c1:
         header_dashboard()
